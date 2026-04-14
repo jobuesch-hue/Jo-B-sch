@@ -6,9 +6,68 @@
     <title>Jo Büsch | Acting & Visuals</title>
     
     <link rel="stylesheet" crossorigin href="assets/index-Ch655pVj.css">
+
+    <style>
+        /* Minimalistisches Cookie-Banner Design */
+        #cookie-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            z-index: 10000;
+            font-family: sans-serif;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            display: none; /* Wird per JS aktiviert */
+        }
+        #cookie-overlay button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        #cookie-overlay a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        @media (min-width: 768px) {
+            #cookie-overlay { text-align: left; padding: 20px 10%; }
+            #cookie-overlay button { float: right; margin-top: -5px; }
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
+
+    <div id="cookie-overlay">
+        <span>
+            Diese Website nutzt Cookies für ein optimales Erlebnis. 
+            Details findest du im <a href="/impressum">Impressum & Datenschutz</a>.
+        </span>
+        <button onclick="acceptCookies()">OK</button>
+    </div>
+
+    <script>
+        // Prüfen, ob der User schon zugestimmt hat
+        if (!localStorage.getItem('jo_cookies_accepted')) {
+            document.getElementById('cookie-overlay').style.display = 'block';
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('jo_cookies_accepted', 'true');
+            document.getElementById('cookie-overlay').style.display = 'none';
+        }
+    </script>
 
     <script type="module" crossorigin src="assets/index-DIOS_Ocf.js"></script>
 </body>
